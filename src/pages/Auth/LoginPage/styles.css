@@ -1,0 +1,96 @@
+/* Full-Screen Layout */
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url('https://source.unsplash.com/1920x1080/?travel,adventure');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 9;
+  }
+  
+  /* Form Styling */
+  .form-box {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .form-box h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-box input,
+  .form-box select {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-box input:focus,
+  .form-box select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Buttons */
+  .submit-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.8rem;
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background: #0056b3;
+  }
+  
+  /* Toggle Text */
+  .form-box p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .form-box p span {
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  /* Error Message */
+  .error {
+    color: #d9534f;
+    margin-bottom: 1rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .form-box {
+      width: 100%;
+      padding: 1.5rem;
+    }
+  }
+  
