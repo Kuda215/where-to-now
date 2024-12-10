@@ -22,12 +22,12 @@ const ai = genkit({
 
 // Define a simple flow that prompts an LLM to generate menu suggestions.
 export const menuSuggestionFlow = onFlow(
-  ai,
-  {
-    name: "menuSuggestionFlow",
-    inputSchema: z.string(),
-    outputSchema: z.string(),
-    authPolicy: firebaseAuth((user) => {
+    ai,
+    {
+      name: "menuSuggestionFlow",
+      inputSchema: z.string(),
+      outputSchema: z.string(),
+      authPolicy: firebaseAuth((user) => {
       // By default, the firebaseAuth policy requires that all requests have an
       // `Authorization: Bearer` header containing the user's Firebase
       // Authentication ID token. All other requests are rejected with error
@@ -40,24 +40,24 @@ export const menuSuggestionFlow = onFlow(
       // if (!user.email_verified) {
       //   throw new Error("Verified email required to run flow");
       // }
-    }),
-  },
-  async (subject) => {
+      }),
+    },
+    async (subject) => {
     // Construct a request and send it to the model API.
-    const prompt =
+      const prompt =
       `Suggest an item for the menu of a ${subject} themed restaurant`;
-    const llmResponse = await ai.generate({
-      model: gemini15Flash,
-      prompt: prompt,
-      config: {
-        temperature: 1,
-      },
-    });
+      const llmResponse = await ai.generate({
+        model: gemini15Flash,
+        prompt: prompt,
+        config: {
+          temperature: 1,
+        },
+      });
 
-    // Handle the response from the model API. In this sample, we just
-    // convert it to a string, but more complicated flows might coerce the
-    // response into structured output or chain the response into another
-    // LLM call, etc.
-    return llmResponse.text;
-  }
+      // Handle the response from the model API. In this sample, we just
+      // convert it to a string, but more complicated flows might coerce the
+      // response into structured output or chain the response into another
+      // LLM call, etc.
+      return llmResponse.text;
+    },
 );
