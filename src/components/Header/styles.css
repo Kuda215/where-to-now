@@ -1,0 +1,74 @@
+/* styles.css */
+header {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: #fff;
+}
+
+header h1 {
+  font-size: 2.5rem;
+}
+
+nav a {
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #f3f4f6; /* Light color on hover */
+}
+
+.profile-card {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+}
+
+.profile-card img {
+  border-radius: 50%;
+}
+
+.profile-info {
+  background-color: white;
+  color: black;
+  border-radius: 0.375rem;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-info span {
+  margin-right: 8px;
+}
+
+
+/* Style for dark mode toggle switch */
+.toggle-checkbox {
+  appearance: none;
+  width: 34px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-checkbox:checked {
+  background-color: #4f86c6; /* Teal background */
+}
+
+.toggle-checkbox:checked::before {
+  transform: translateX(14px);
+}
+
+.toggle-checkbox::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.3s ease;
+}

@@ -13,7 +13,7 @@ function App() {
     <AuthProvider>
       <Router>
         <Header />
-        <div className="container mx-auto p-6">
+        <div className="over-all-container ">
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route

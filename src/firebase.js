@@ -1,30 +1,34 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
-import { getAuth } from 'firebase/auth';
+import { getAuth ,signInWithEmailAndPassword } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCWVCtDZqNNQiv2X5rTVZqqxcfT8Nm80tk",
-  authDomain: "where-to-now-7d4b9.firebaseapp.com",
-  projectId: "where-to-now-7d4b9",
-  storageBucket: "where-to-now-7d4b9.firebasestorage.app",
-  messagingSenderId: "579291111250",
-  appId: "1:579291111250:web:09d0770ac7eb4de9b1648b",
-  measurementId: "G-K9Y2C51CMM"
+  apiKey: "AIzaSyBx0WahBJZQqttFlUlQzhab3GVxOBgyieo",
+  authDomain: "where-to-now-a1086.firebaseapp.com",
+  projectId: "where-to-now-a1086",
+  storageBucket: "where-to-now-a1086.firebasestorage.app",
+  messagingSenderId: "679018596423",
+  appId: "1:679018596423:web:a8ddf3fc131aae8f6f0962",
+  measurementId: "G-QH7L8BNXQE"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
-export const auth = getAuth(app);
 
+const auth = getAuth(app);
 
+const signInUser = async (email, password) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    console.log("Signed in successfully:", user);
+  } catch (error) {
+    console.error("Error signing in:", error.message);
+  }
+};
 
-
-
-//yes
-
+export { auth, signInUser };

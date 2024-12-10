@@ -1,62 +1,40 @@
+// src/components/Home.js
 import React from 'react';
-import './styles.css';
+import './styles.css'; // Importing the CSS for Home page styling
+import backgroundVideo from '../../assets/videos/homevid.mp4';
 
-const HomePage = () => {
+function Home() {
   return (
-    <div className="container">
-      {/* Row 1 */}
-      <div className="row">
-        <div className="block block-1">
-          <div className="content">
-            <h2>Discover Your Perfect Event</h2>
-            <p>Find the best events and vacations tailored to you, quickly and easily.</p>
-            <button>Explore Now</button>
-          </div>
-          <div className="media">
-            <video autoplay muted loop>
-              <source src="path-to-your-video.mp4" type="video/mp4" />
-            </video>
+    <div className="home-container">
+      <video className="background-video" autoPlay loop muted>
+        <source src={backgroundVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="home-intro">
+        <div className="intro-text">
+          <h2 className="welcome-message">
+            Your Adventure Begins Here!
+          </h2>
+          <p className="home-description">
+          Discover new destinations, plan unforgettable events, and organize your travel budget effortlessly. Whether it's an adventure or a celebration, let us make it extraordinary!
+          </p>
+
+          <div className="cta-buttons">
+            <button className="cta-button plan-trip">Start Planning!</button>
+            <button className="cta-button explore-budget">Explore Destinations</button>
           </div>
         </div>
-        <div className="block block-2">
-          <div className="content">
-            <h2>Personalized Recommendations</h2>
-            <p>Our AI suggests the perfect events based on your preferences.</p>
-            <button>Get Started</button>
-          </div>
-          <div className="media">
-            <img src="path-to-image.jpg" alt="Event or Vacation" />
-          </div>
+
+        <div className="hero-image">
+          <img src="/images/logo.png" alt="Travel destination" className="hero-img" />
         </div>
       </div>
 
-      {/* Row 2 */}
-      <div className="row">
-        <div className="block block-3">
-          <div className="content">
-            <h2>Seamless Planning</h2>
-            <p>Plan your next vacation or day out in minutes with our easy-to-use platform.</p>
-            <button>Plan Now</button>
-          </div>
-          <div className="media">
-            <video autoplay muted loop>
-              <source src="path-to-your-video.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </div>
-        <div className="block block-4">
-          <div className="content">
-            <h2>Get Inspired</h2>
-            <p>Browse events, vacations, and day trips that suit your mood and interests.</p>
-            <button>Start Browsing</button>
-          </div>
-          <div className="media">
-            <img src="path-to-image.jpg" alt="Event or Vacation" />
-          </div>
-        </div>
+      <div className="home-footer">
+        <p>&copy; 2024 WhereToNow. All Rights Reserved.</p>
       </div>
     </div>
   );
-};
+}
 
-export default HomePage;
+export default Home;

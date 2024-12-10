@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../../firebase';
+import { auth ,signInUser } from '../../../firebase';
 import './styles.css';
 
 const LoginPage = () => {
@@ -30,7 +30,7 @@ const LoginPage = () => {
       }
     } else {
       try {
-        await auth.signInWithEmailAndPassword(auth, email, password);
+        await signInUser( email, password);
         navigate('/');
       } catch (err) {
         setError(err.message);
