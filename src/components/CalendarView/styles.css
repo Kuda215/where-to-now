@@ -1,0 +1,85 @@
+.calendarView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vh;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .CalendarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .calendar-buttons button {
+    background-color: #218b76;
+    color: white;
+    border: none;
+    padding: 0.2rem 1rem;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 0 0.5rem;
+  }
+  
+  .calendar-buttons button:hover {
+    background-color: #218b76;
+  }
+  
+  .calendar {
+    width: 100%;
+    margin: auto;
+  }
+  
+  .event-indicator {
+    text-align: center;
+    font-size: 0.9rem;
+    color: red;
+  }
+  
+  .event-details {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  .event-details h5 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .event-details p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+
+  .react-calendar {
+    width: 80%;
+    font-size: 1rem; /* Adjust font size here */
+    border: none;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-left: 10%;
+  }
+  
+  /* Customize the calendar tiles */
+  .react-calendar__tile {
+    font-size: 0.9rem; /* Set tile font size */
+    padding: 10px; /* Adjust tile padding */
+    text-align: center;
+  }
+  
+  /* Customize the width of tiles with markers */
+  .react-calendar__tile--active,
+  .react-calendar__tile--hasActive {
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+  }
+  
+  .event-indicator span {
+    font-size: 0.8rem; /* Adjust the font size of the 📌 icon */
+  }

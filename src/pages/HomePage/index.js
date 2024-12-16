@@ -1,40 +1,93 @@
-// src/components/Home.js
-import React from 'react';
-import './styles.css'; // Importing the CSS for Home page styling
 import backgroundVideo from '../../assets/videos/homevid.mp4';
 
-function Home() {
+
+
+import React, { useState } from "react";
+import "./styles.css";  // Import the CSS file for styling
+import CalendarView from '../../components/CalendarView';
+
+const HomePage = () => {
+  // Sample data for the next trip and upcoming schedule
+  const nextTrip = {
+    title: "Traveling to Paris",
+    date: "2024-12-25",
+    time: "09:00 AM",
+    gpsLink: "https://www.google.com/maps?q=48.8566,2.3522",  // Coordinates for Paris
+  };
+
+  const [calendar, setCalendar] = useState([
+    { date: "2024-12-23", event: "Trip to Rome" },
+    { date: "2024-12-30", event: "Trip to London" },
+  ]);
+
   return (
     <div className="home-container">
-      <video className="background-video" autoPlay loop muted>
-        <source src={backgroundVideo} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div className="home-intro">
-        <div className="intro-text">
-          <h2 className="welcome-message">
-            Your Adventure Begins Here!
-          </h2>
-          <p className="home-description">
-          Discover new destinations, plan unforgettable events, and organize your travel budget effortlessly. Whether it's an adventure or a celebration, let us make it extraordinary!
-          </p>
-
-          <div className="cta-buttons">
-            <button className="cta-button plan-trip">Start Planning!</button>
-            <button className="cta-button explore-budget">Explore Destinations</button>
-          </div>
+      {/* Left Pane */}
+      <div className="left-pane">
+        <div className="NextTrip">
+            {/* <video className="background-video-home" autoPlay loop muted>
+              <source src={backgroundVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video> */}
+            <div className="_card">
+              <h4>Traveling to {nextTrip.title.split(' ')[2]}</h4>
+              <p>{nextTrip.date} | {nextTrip.time}</p>
+              <img src="\images\loc.png" alt="Travel destination" className="headerLogo" />
+              </div>
+        </div>
+        <div className='calendarView'>
+            <div className='CalendarHeader' >
+              <div className='calendar'>
+                  <CalendarView />
+              </div>
+            </div>
         </div>
 
-        <div className="hero-image">
-          <img src="/images/logo.png" alt="Travel destination" className="hero-img" />
+
+        {/* <div className="video-background">
+          <video className="background-video" autoPlay loop muted>
+            <source src={backgroundVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
+
+        <div className="next-trip-card">
+          <h2>Traveling to {nextTrip.title.split(' ')[2]}</h2>
+          <p>{nextTrip.date} | {nextTrip.time}</p>
+          <a href={nextTrip.gpsLink} target="_blank" rel="noopener noreferrer">
+            <img src="https://maps.google.com/mapfiles/ms/icons/blue-dot.png" alt="Google Maps" />
+          </a>
+        </div>
+
+        <div className="upcoming-schedule">
+          <h3>Upcoming Schedule</h3>
+          <ul>
+            {calendar.map((trip, index) => (
+              <li key={index}>
+                <span>{trip.date}</span> - {trip.event}
+              </li>
+            ))}
+          </ul>
+        </div> */}
       </div>
 
-      <div className="home-footer">
-        <p>&copy; 2024 WhereToNow. All Rights Reserved.</p>
+      {/* Right Pane */}
+      <div className="right-pane">
+        {/* <div className="trip-choices">
+          <h3>Choose Your Next Adventure</h3>
+          <p>Explore new destinations and plan your next journey with ease.</p>
+        </div> */}
+
+        {/* Get Inspired */}
+        {/* <div className="get-inspired"> */}
+          {/* <p>Looking for inspiration?</p>
+          <button onClick={() => window.open("https://www.pinterest.com", "_blank")}>
+            Get Inspired
+          </button> */}
+        {/* </div> */}
       </div>
     </div>
   );
-}
+};
 
-export default Home;
+export default HomePage;

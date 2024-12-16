@@ -1,74 +1,173 @@
-/* styles.css */
-header {
-    background-color: rgba(0, 0, 0, 0.7) !important;
-    color: #fff;
+/* General Styling */
+body {
+  margin: 0;
+  background-color: #eee9e9;
+  font-family: Arial, sans-serif;
 }
 
-header h1 {
-  font-size: 2.5rem;
+/* Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 6vh;
+  background-color: #eee9e9;
+  padding: 0 4vw;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-nav a {
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #f3f4f6; /* Light color on hover */
-}
-
-.profile-card {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  background-color: white;
-}
-
-.profile-card img {
-  border-radius: 50%;
-}
-
-.profile-info {
-  background-color: white;
-  color: black;
-  border-radius: 0.375rem;
-  padding: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Logo Section */
+.logo-section {
   display: flex;
   align-items: center;
-  cursor: pointer;
-}
-
-.profile-info span {
-  margin-right: 8px;
-}
-
-
-/* Style for dark mode toggle switch */
-.toggle-checkbox {
-  appearance: none;
-  width: 34px;
-  height: 20px;
+  width: 15%;
+  height: 75%;
+  border-radius: 20px;
   background-color: #fff;
-  border-radius: 50px;
-  position: relative;
+  gap: 0.5rem; 
+}
+
+.logo {
+  font-size: 16px;
+  margin-right: 0.5rem;
+  display: flex; /* Make sure it's flexible */
+  align-items: center; /* Center logo vertically */
+  justify-content: center; /* Center logo horizontally if needed */
+  font-size: 2rem; /* Adjust the logo size */
+  line-height: 1; 
+}
+
+.site-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  line-height: 1;
+}
+
+/* Navbar */
+.navbar {
+  width: 50%;
+  background-color: #fff;
+  border-radius: 20px;
+  height: 75%;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.headerLogo{
+  width: 45px;
+  height: 45px;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.navbar ul li {
+  font-size: 12px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul li a .icon {
+  margin-right: 0.5rem;
+}
+
+/* Action Section */
+.action-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 30%;
+  gap: 1rem;
+  background-color: #fff;
+  border-radius: 20px;
+  height: 75%;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.2rem 0.5rem;
+  background-color: #fff;
+  height: 75%;
+  background-color: #eee9e9;
+  justify-content: space-around;
+  font-size: 12px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  margin-left: 0.2rem;
+  font-size: 12px;
+  background-color: #fff;
+  height: 80%;
+  width: 20vw;
+  flex: auto;
+}
+
+/* Icons */
+.icon {
+  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.toggle-checkbox:checked {
-  background-color: #4f86c6; /* Teal background */
+.notification-icon {
+  position: relative;
 }
 
-.toggle-checkbox:checked::before {
-  transform: translateX(14px);
+/* Profile Dropdown */
+.profile-dropdown {
+  position: relative;
 }
 
-.toggle-checkbox::before {
-  content: "";
+.profile-dropdown .dropdown {
   position: absolute;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background-color: white;
-  transition: all 0.3s ease;
+  top: 120%;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: none;
+}
+
+.profile-dropdown:hover .dropdown {
+  display: block;
+}
+
+.profile-dropdown .dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-dropdown .dropdown ul li {
+  padding: 0.5rem 1rem;
+}
+
+.profile-dropdown .dropdown ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.profile-dropdown .dropdown ul li:hover {
+  background-color: #f7f7f2;
 }

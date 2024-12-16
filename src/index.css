@@ -18,3 +18,10 @@ code {
 }
 
 
+.over-all-container{
+  width: 100vw;
+  height: 92vh;
+  overflow: hidden;
+  padding: 4VH;
+
+}

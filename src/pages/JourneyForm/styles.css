@@ -1,0 +1,97 @@
+/* Basic styling for the form */
+.journey-form {
+    padding: 0.2rem;
+    width: 100vw !important;
+    margin: 0 auto;
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Stepper styling */
+  .stepper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    width: 30vw;
+    align-items: center;
+    align-self: center;
+    margin-left: 35vw;
+  }
+  
+  .step {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #218b76;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    font-weight: bold;
+    color: #218b76;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .step.active {
+    background-color: #218b76;
+    color: white;
+  }
+  
+  /* Form fields styling */
+  .form-content {
+    margin-bottom: 1.5rem;
+    width: 100vw !important;
+    background-color: #f0f ;
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  textarea {
+    height: 100px;
+    resize: none;
+  }
+  
+  /* Button styles */
+  .navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  
+  button {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .prev-btn {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .next-btn {
+    background-color: #218b76;
+    color: white;
+  }
+  
+  button:disabled {
+    cursor: not-allowed;
+    background-color: #dcdcdc;
+  }
+  
+  button:hover:not(:disabled) {
+    background-color: #218b76;
+  }
+  

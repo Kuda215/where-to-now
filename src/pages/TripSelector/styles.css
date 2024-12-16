@@ -1,0 +1,133 @@
+/* General Container */
+.trip-selector {
+    margin: 4vh 4vw;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header Section */
+  .trip-header {
+    text-align: left;
+    margin-bottom: 1rem;
+    color: #555;
+    background-color: #fff !important;
+  }
+  
+  .trip-header h1 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .trip-header p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  .tripName{
+    color: #218b76;
+  }
+  
+  /* Trip Options */
+  .trip-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .trip-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .trip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .trip-card.selected {
+    border-color: #007bff;
+    background-color: #eef6ff;
+  }
+  
+  .trip-card .trip-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .trip-card h3 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+  
+  .trip-card p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  /* Trip Details Section */
+  .trip-details {
+    margin-top: 2rem;
+    width: 100%;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+  
+  .trip-details h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  
+  .trip-details label {
+    display: block;
+    margin: 1rem 0;
+    font-size: 1rem;
+  }
+  
+  .trip-details input,
+  .trip-details textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .continue-btn {
+    position: fixed; /* Fixed position for staying at the same spot */
+    bottom: 4vh; /* Distance from the bottom of the screen */
+    right: 4vw; /* Distance from the left of the screen */
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    width: 13vw;
+    z-index: 10; /* Ensures the button appears above other elements */
+  }
+  
+  .continue-btn:hover {
+    background-color: #218b76; /* Slightly darker blue for hover effect */
+  }
+  
+  .continue-btn:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+  
+  .continue-btn:hover:enabled {
+    background-color: #218b76;
+  }
+  
