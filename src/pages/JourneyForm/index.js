@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import "./styles.css";
 import TravelerDetails from "../../components/TravelerDetails";
-import TravelerInfo from "../../components/TravelerInfo";
+import TripInfo from "../../components/TravelerInfo";
 import TravelPreferences from "../../components/TravelPreferences";
 import Accommodation from "../../components/Accomodation";
+import ImageCarousel from "../../components/ImageCarousel";
 
 // Dummy form components for each step
 const Step1 = () => (
@@ -81,6 +82,21 @@ const JourneyForm = () => {
     setShowTravelDetails(false);
   };
 
+  const carouselImages = [
+    require('../../assets/images/man1.jpg'),
+    require('../../assets/images/man2.jpg'),
+    require('../../assets/images/man3.jpg'),
+  ];
+  
+
+  // State to track the current image index
+  const [currentImage, setCurrentImage] = useState(0);
+
+  // Handle indicator click
+  const handleIndicatorClick = (index) => {
+    setCurrentImage(index);
+  };
+
   const handleSaveFromChild = (data) => {
     setShowTravelDetails(data.showTravelDetails);
     setDetailsEditable(data.detailsEditable);
@@ -97,7 +113,7 @@ const JourneyForm = () => {
       case 1:
         return <TravelerDetails onSave={handleSaveFromChild} />;
       case 2:
-        return <TravelerInfo />;
+        return <TripInfo />;
       case 3:
         return <TravelPreferences />;
       case 4:
@@ -111,6 +127,28 @@ const JourneyForm = () => {
     setDetailsEditable(false);
     setShowTravelDetails(false);
   }
+
+  const [travelers_images, setTravelersImages] = useState([]);
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0]; // Get the first image file
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        // Add the new image to the travelers_images array
+        setTravelersImages((prevImages) => [
+          ...prevImages,
+          { src: reader.result, name: file.name },
+        ]);
+      };
+      reader.readAsDataURL(file); // Read the image as a data URL
+      console.log(travelers_images);
+    }
+  };
+
+  useEffect(() => {
+    console.log(travelers_images);
+  }, [travelers_images]); // Trigger whenever travelers_images changes
 
   return (
     <div className="journey-form">
@@ -137,7 +175,6 @@ const JourneyForm = () => {
 
       <div className="vac_form_container">
           {currentStep === 1 &&  getCurrentStepComponent()}
-          
           {showTravelDetails === true &&
             <div className="navigation-buttons">
               <button
@@ -156,6 +193,23 @@ const JourneyForm = () => {
               </button>
             </div> 
           }
+      </div>
+
+      <div className="image_couresel">
+        <ImageCarousel images={travelers_images} />
+        {/* <div className="upload-section">
+          <button>
+            <label htmlFor="image-upload">Upload Image</label>
+          </button>
+          <input
+            type="file"
+            id="image-upload"
+            accept="image/*"
+            onChange={handleImageUpload}
+            style={{ display: 'none' }}
+          />
+        </div> */}
+
       </div>
     </div>  
   );

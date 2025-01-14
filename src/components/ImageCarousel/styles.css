@@ -1,0 +1,101 @@
+.image_couresel {
+    position: relative;
+    max-width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .carousel {
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Adjust height as needed */
+  }
+  
+  .carousel-image-container {
+    width: 16vw;
+    height: 20vh;
+  }
+
+
+  
+  .carousel-image {
+    width: 16vw;
+    height: 20vh;
+    object-fit: cover; /* Keeps the aspect ratio intact */
+    border-radius: 8px;
+  }
+  
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    z-index: 2;
+  }
+  
+  .prev-btn {
+    left: 10px;
+  }
+  
+  .next-btn {
+    right: 10px;
+  }
+  
+  .carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  
+  .indicator {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .indicator.active {
+    background-color: white;
+  }
+  
+  .upload-section {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .upload-section button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .upload-section button:hover {
+    background-color: #0056b3;
+  }
+  
+  .upload-section input[type="file"] {
+    display: none;
+  }
+  

@@ -101,8 +101,7 @@ export default function TravelerDetails({ onNext, onBack, images = [], onSave })
   
 
   return (
-    <div>
-      <div className="vac_form_content">
+        <div className="form_left_container">
             <h3 className="vac_page_header">Traveler Details
             {clearForm && <span onClick={HandleClearForm} style={{color:'red', fontSize:'large', float:'right', marginRight:'2vw'}}>Clear Form - x</span> }
 
@@ -242,7 +241,6 @@ export default function TravelerDetails({ onNext, onBack, images = [], onSave })
       <div style={{ height: '4vh', width: '50vw' }} className="spacer"></div>
 
       </div>
-      
-    </div>
+   
   );
 }

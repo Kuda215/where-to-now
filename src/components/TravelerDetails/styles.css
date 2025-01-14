@@ -57,4 +57,22 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  
+
+  .form_left_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: yellow;
+    width: 60vw;
+    height: 30vh;
+  }
+
+  .image_right_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40vw;
+    background-color: red;
+    height: 30vh;
+
+  }

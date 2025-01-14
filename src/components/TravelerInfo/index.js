@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FormComponent from "../FormComponent";
 
-export default function TravelerInfo({ onNext }) {
+export default function TripInfo({ onNext }) {
   const [data, setData] = useState({ name: "", email: "", phone: "" });
 
   const handleNext = () => {
