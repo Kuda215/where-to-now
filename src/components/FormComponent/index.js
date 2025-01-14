@@ -1,21 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import "./styles.css";
 
-export default function FormComponent({ title, children, onNext, onBack, isLastStep = false }) {
+const FormComponent = ({ steps = [], currentStep = 0, children }) => {
   return (
-    <div className="bg-white shadow-mds p-6 w-full  formComponent" >
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">{title}</h2>
-      <div className="mb-6">{children}</div>
-      <div className="flex justify-between">
-        {onBack && (
-          <button
-            onClick={onBack}
-            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+    <div className="form-container">
+      {/* Stepper Section */}
+      <div className="stepper">
+        {steps.map((step, index) => (
+          <div
+            key={index}
+            className={`step ${index < currentStep ? "completed-step" : ""} ${
+              index === currentStep ? "active-step" : ""
+            }`}
           >
-            Back
-          </button>
-        )}
-       
+            <div className="step-circle">{index + 1}</div>
+            <div className="step-name">{step}</div>
+          </div>
+        ))}
       </div>
+
+      {/* Main Content Section */}
+      <div className="content">{children}</div>
     </div>
   );
-}
+};
+
+export default FormComponent;

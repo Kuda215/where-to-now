@@ -45,7 +45,7 @@ const TripSelector = () => {
   return (
     <div className="trip-selector">
       <header className="trip-header">
-        <h1>Select Your Trip Type</h1>
+        <h1>Choose your next Adventure</h1>
         <p>Plan your journey by choosing the trip that best suits your needs.</p>
       </header>
 
@@ -54,7 +54,7 @@ const TripSelector = () => {
           <div
             key={trip.id}
             className={`trip-card ${selectedTrip?.id === trip.id ? "selected" : ""}`}
-            onClick={() => setSelectedTrip(trip)} // Set selected trip
+            onClick={() => {setSelectedTrip(trip);handleContinue();}} // Set selected trip
           >
             <div className="trip-icon">{trip.icon}</div>
             <h4 className="tripName">{trip.name}</h4>
@@ -63,13 +63,6 @@ const TripSelector = () => {
         ))}
       </div>
 
-      <button
-        className="continue-btn"
-        disabled={!selectedTrip} // Disable the button if no trip is selected
-        onClick={handleContinue} // Directly call the function here
-      >
-        Continue &gt;&gt;
-      </button>
     </div>
   );
 };

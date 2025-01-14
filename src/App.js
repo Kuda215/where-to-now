@@ -13,6 +13,7 @@ import ItineraryStops from './components/ItineraryStops';
 import ActivitiesForm from './components/ActivitiesForm';
 import TravelPreferences from './components/TravelPreferences';
 import Accomodation from './components/Accomodation';
+import GetInspo from './pages/GetInspo';
 
 // import LocationsForm from './components/LocationsForm';
 
@@ -122,10 +123,10 @@ function App() {
             />
 
             <Route
-              path="/plan/Accomodation"
+              path="/GetInspIRED"
               element={
                 <ProtectedRoute>
-                  <Accomodation />
+                  <GetInspo />
                 </ProtectedRoute>
               }
             />

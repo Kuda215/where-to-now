@@ -31,8 +31,34 @@
   z-index: -1; /* Ensures content appears above video */
 }
 
+.trip_selector{
+  width: 100%;
+  height: 10%;
+  border-radius: 15px;
+  border: #dbdada 1px solid;
+}
+
+.homegps{
+  width: 100%;
+  height: 60%;
+  border: 1px solid #00000002;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.2) ;
+}
+
+
 .NextTrip{
-  background-image: url('../../assets/images/front.jpg');
+  background-image: url('../../../public/images/inspo.jpg');
+  background-size: cover;
+  border: 1px solid #c9c9c9;
+  height: 45%;
+  margin: 2vh;
+  border-radius: 15px;
+  overflow:hidden;
+  position: relative;
+}
+
+.NextTrip2{
+  background-image: url('../../../public/images/homePic1.jpg');
   background-size: cover;
   border: 1px solid #c9c9c9;
   height: 45%;
@@ -69,6 +95,25 @@
   bottom: 0;
   left: 0;
 }
+
+
+._card2{
+  background-color: azure;
+  width: 40%;
+  height: 50%;
+  margin: 2vh;
+  border-radius: 8px;
+  padding: 1.5vh;
+
+  position:absolute ;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between
+  
+}
+
 
 .calendarView{
   border-radius: 8px;
@@ -154,9 +199,6 @@
 }
 
 .get-inspired {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
   text-align: center;
 }
 
@@ -177,4 +219,18 @@
 
 .get-inspired p {
   margin-bottom: 10px;
+}
+
+
+.btn{
+  background-color: #218b76;
+  width: 10vw;
+  color: #fff;
+  border-radius: 30px;
+
+}
+
+.headerTxt{
+  font-size: 18px !important;
+
 }

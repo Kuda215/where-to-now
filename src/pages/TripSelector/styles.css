@@ -1,6 +1,6 @@
 /* General Container */
 .trip-selector {
-    margin: 4vh 4vw;
+    margin: 2vh 2vw;
     font-family: Arial, sans-serif;
     color: #fff;
     display: flex;
@@ -10,7 +10,7 @@
   /* Header Section */
   .trip-header {
     text-align: left;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
     color: #555;
     background-color: #fff !important;
   }
@@ -32,8 +32,8 @@
   /* Trip Options */
   .trip-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
+    gap: 0.4rem;
     width: 100%;
   }
   
@@ -45,6 +45,7 @@
     text-align: center;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
+    height: 22vh;
   }
   
   .trip-card:hover {
@@ -53,7 +54,7 @@
   }
   
   .trip-card.selected {
-    border-color: #007bff;
+    border-color: #218b76;
     background-color: #eef6ff;
   }
   
@@ -109,7 +110,7 @@
     padding: 0.75rem 2rem;
     font-size: 1rem;
     color: white;
-    background-color: #007bff;
+    background-color: #218b76;
     border: none;
     border-radius: 8px;
     cursor: pointer;
