@@ -1,9 +1,10 @@
-.image_couresel {
+.image_couresel_container {
     position: relative;
-    max-width: 80%;
     margin: 0 auto;
     overflow: hidden;
     border-radius: 8px;
+    width: 100%;
+    height: 100%;
   }
   
   .carousel {
@@ -13,15 +14,15 @@
   }
   
   .carousel-image-container {
-    width: 16vw;
-    height: 20vh;
+    width: 10vw !important;
+    height: 10vh !important;
   }
 
 
   
   .carousel-image {
-    width: 16vw;
-    height: 20vh;
+    width: 10vw !important;
+    height: 10vh !important;
     object-fit: cover; /* Keeps the aspect ratio intact */
     border-radius: 8px;
   }
@@ -99,3 +100,4 @@
     display: none;
   }
   
+

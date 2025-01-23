@@ -1,55 +1,33 @@
 import React, { useState ,useEffect } from "react";
 import "./styles.css";
 import TravelerDetails from "../../components/TravelerDetails";
-import TripInfo from "../../components/TravelerInfo";
+import TripDetailsForm from "../../components/TravelerInfo";
 import TravelPreferences from "../../components/TravelPreferences";
-import Accommodation from "../../components/Accomodation";
+import AccommodationDetails from "../../components/Accomodation";
 import ImageCarousel from "../../components/ImageCarousel";
-
-// Dummy form components for each step
-const Step1 = () => (
-  <div>
-    <h3>Step 1: Choose Destination</h3>
-    <label>Destination:</label>
-    <input type="text" placeholder="Enter destination" />
-  </div>
-);
-
-const Step2 = () => (
-  <div>
-    <h3>Step 2: Select Dates</h3>
-    <label>Start Date:</label>
-    <input type="date" />
-    <label>End Date:</label>
-    <input type="date" />
-  </div>
-);
-
-const Step3 = () => (
-  <div>
-    <h3>Step 3: Add Nostes</h3>
-    <label>Notes:</label>
-    <textarea placeholder="Add any special notes"></textarea>
-  </div>
-);
 
 const JourneyForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
   // Function to handle next step
   const nextStep = () => {
-    if (currentStep < 3) {
-      setCurrentStep(currentStep + 1);
-    }
+    setCurrentStep((prevStep) => {
+      const updatedStep = prevStep + 1;
+      return updatedStep;
+    });
 
     setShowTravelDetails(false);
   };
 
   // Function to handle previous step
   const prevStep = () => {
-    if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
-    }
+    setCurrentStep((prevStep) => {
+      const updatedStep = prevStep - 1;
+      return updatedStep;
+    });
+
+    setShowTravelDetails(false);
+
   };
 
   const [numTravelers, setNumTravelers] = useState(1);
@@ -81,14 +59,7 @@ const JourneyForm = () => {
     setTravelerDetails(updatedDetails);
     setShowTravelDetails(false);
   };
-
-  const carouselImages = [
-    require('../../assets/images/man1.jpg'),
-    require('../../assets/images/man2.jpg'),
-    require('../../assets/images/man3.jpg'),
-  ];
   
-
   // State to track the current image index
   const [currentImage, setCurrentImage] = useState(0);
 
@@ -98,14 +69,33 @@ const JourneyForm = () => {
   };
 
   const handleSaveFromChild = (data) => {
-    setShowTravelDetails(data.showTravelDetails);
+    setShowTravelDetails(true);
     setDetailsEditable(data.detailsEditable);
     setClearForm(data.clearForm);
 
-    console.log("Received from child:", data);
+    console.log(showTravelDetails)
+
   };
+  
+  const handleSaveFromTripDetails = (data) => {
+    setShowTravelDetails(true);
+    setDetailsEditable(data.detailsEditable);
+    setClearForm(data.clearForm);
+
+    console.log(showTravelDetails)
+
+  };
+  
 
   const toggleShowDetails = () => setShowDetails(!showDetails);
+
+  const handleImageChange_Travelers = (images) => {
+    setTravelersImages(images); 
+  };
+
+  const handleImageChange_TripInfo = (images) => {
+    setTripDetails_images(images); 
+  };
 
   // Form component for the current step
   const getCurrentStepComponent = () => {
@@ -113,11 +103,11 @@ const JourneyForm = () => {
       case 1:
         return <TravelerDetails onSave={handleSaveFromChild} />;
       case 2:
-        return <TripInfo />;
+        return <TripDetailsForm  onSave={handleSaveFromTripDetails}/>;
       case 3:
-        return <TravelPreferences />;
+        return <AccommodationDetails />;
       case 4:
-        return <Accommodation />;
+        return <AccommodationDetails />;
     }
   };
 
@@ -129,26 +119,12 @@ const JourneyForm = () => {
   }
 
   const [travelers_images, setTravelersImages] = useState([]);
+  const [TripDetails_images, setTripDetails_images] = useState([]);
+  const [Accomodation_images, handleImageChange_Accomodation] = useState([]);
 
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0]; // Get the first image file
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        // Add the new image to the travelers_images array
-        setTravelersImages((prevImages) => [
-          ...prevImages,
-          { src: reader.result, name: file.name },
-        ]);
-      };
-      reader.readAsDataURL(file); // Read the image as a data URL
-      console.log(travelers_images);
-    }
-  };
 
   useEffect(() => {
-    console.log(travelers_images);
-  }, [travelers_images]); // Trigger whenever travelers_images changes
+  }, [travelers_images,TripDetails_images,handleSaveFromChild,currentStep]); // Trigger whenever they change
 
   return (
     <div className="journey-form">
@@ -174,7 +150,7 @@ const JourneyForm = () => {
       </div>
 
       <div className="vac_form_container">
-          {currentStep === 1 &&  getCurrentStepComponent()}
+          {currentStep < 3 &&  getCurrentStepComponent()}
           {showTravelDetails === true &&
             <div className="navigation-buttons">
               <button
@@ -196,20 +172,15 @@ const JourneyForm = () => {
       </div>
 
       <div className="image_couresel">
-        <ImageCarousel images={travelers_images} />
-        {/* <div className="upload-section">
-          <button>
-            <label htmlFor="image-upload">Upload Image</label>
-          </button>
-          <input
-            type="file"
-            id="image-upload"
-            accept="image/*"
-            onChange={handleImageUpload}
-            style={{ display: 'none' }}
-          />
-        </div> */}
-
+        { currentStep == 1 &&
+          <ImageCarousel images={travelers_images} onImagesChange={handleImageChange_Travelers} />
+        }
+        { currentStep == 2 &&
+          <ImageCarousel images={TripDetails_images} onImagesChange={handleImageChange_TripInfo} />
+        }
+         { currentStep == 3 &&
+          <ImageCarousel images={Accomodation_images} onImagesChange={handleImageChange_Accomodation} />
+        }
       </div>
     </div>  
   );

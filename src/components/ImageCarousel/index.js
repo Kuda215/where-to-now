@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const ImageCarousel = ({ images = [] }) => {
+const ImageCarousel = ({ images = [] ,onImagesChange}) => {
   // State to hold uploaded images, initialized with prop images
   const [travelers_images, setTravelersImages] = useState(images);
 
@@ -19,8 +19,16 @@ const ImageCarousel = ({ images = [] }) => {
     setCurrentImage(index);
   };
 
+
+  useEffect(() => {
+    // Send the images to the parent when the component mounts
+    if (onImagesChange) {
+      onImagesChange(travelers_images);
+    }
+  }, [onImagesChange, travelers_images]);
+
   return (
-    <div className="image_couresel">
+    <div className="image_couresel_container">
       <div className="carousel">
 
         {/* Display the current image */}
@@ -30,6 +38,8 @@ const ImageCarousel = ({ images = [] }) => {
               src={travelers_images[currentImage]}
               alt={`Slide ${currentImage + 1}`}
               className="carousel-image"
+              width={400}
+              height={200}
             />
           </div>
         ) : (
@@ -85,7 +95,7 @@ const ImageCarousel = ({ images = [] }) => {
             style={{ display: "none" }}
             id="fileInput"
           />
-          <button onClick={() => document.getElementById("fileInput").click()}>
+          <button style={{backgroundColor:'#218b76', color:'#fff', width:'60%', alignContent:'center', alignItems:'center'}} onClick={() => document.getElementById("fileInput").click()} >
             Upload Images
           </button>
         </div>

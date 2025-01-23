@@ -90,6 +90,7 @@ export default function TravelerDetails({ onNext, onBack, images = [], onSave })
     };
 
     onSave(dataToSend);
+    console.log("In Child component: OnSave called: " , dataToSend);
   }
 
   const HandleClearForm = () => {

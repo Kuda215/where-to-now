@@ -1,88 +1,114 @@
-import React, { useState } from "react";
-import "./styles.css";
+import { useState } from "react";
 
-const Accommodation = () => {
-  const [formData, setFormData] = useState({
-    accommodationType: "",
-    checkInDate: "",
-    checkOutDate: "",
-    specialRequests: "",
+export default function AccommodationDetails({ onSave }) {
+  const [data, setData] = useState({
+    accommodations: [],
+    tripStartDate: "", // Start date of the trip
+    tripEndDate: "", // End date of the trip
   });
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData({
-      ...formData,
-      [id]: value,
-    });
+  // Generate an array of dates between trip start and end dates
+  const generateDateRange = (startDate, endDate) => {
+    const dates = [];
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    while (start <= end) {
+      dates.push(new Date(start).toLocaleDateString());
+      start.setDate(start.getDate() + 1);
+    }
+    return dates;
+  };
+
+  // Handle changes to the accommodation for a specific date
+  const handleAccommodationChange = (date, accommodationType) => {
+    const newAccommodations = [...data.accommodations];
+    const existingAccommodation = newAccommodations.find(
+      (item) => item.date === date
+    );
+
+    if (existingAccommodation) {
+      existingAccommodation.accommodationType = accommodationType;
+    } else {
+      newAccommodations.push({ date, accommodationType });
+    }
+
+    setData({ ...data, accommodations: newAccommodations });
+  };
+
+  // Handle the save button click
+  const handleSave = () => {
+    const accommodationData = {
+      tripStartDate: data.tripStartDate,
+      tripEndDate: data.tripEndDate,
+      accommodations: data.accommodations,
+    };
+
+    onSave(accommodationData);
+    console.log("Accommodation Data Saved:", accommodationData);
   };
 
   return (
-    <div className="accommodation">
-      <h2>Accommodation Details</h2>
-      <p>Tell us about your accommodation preferences for your journey.</p>
+    <div>
+      <h2 className="text-xl font-bold mb-4">Accommodation Details</h2>
 
-      <form>
-        <div className="form-group">
-          <label htmlFor="accommodationType">Type of Accommodation</label>
-          <select
-            id="accommodationType"
-            value={formData.accommodationType}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Accommodation Type</option>
-            <option value="hotel">Hotel</option>
-            <option value="hostel">Hostel</option>
-            <option value="airbnb">Airbnb</option>
-            <option value="resort">Resort</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
+      {/* Trip Dates */}
+      <label className="block mb-2">Trip Start Date</label>
+      <input
+        type="date"
+        value={data.tripStartDate}
+        onChange={(e) => setData({ ...data, tripStartDate: e.target.value })}
+        className="border rounded w-full p-2 mb-4"
+      />
 
-        <div className="form-group">
-          <label htmlFor="checkInDate">Check-in Date</label>
-          <input
-            type="date"
-            id="checkInDate"
-            value={formData.checkInDate}
-            onChange={handleChange}
-            required
-          />
-        </div>
+      <label className="block mb-2">Trip End Date</label>
+      <input
+        type="date"
+        value={data.tripEndDate}
+        onChange={(e) => setData({ ...data, tripEndDate: e.target.value })}
+        className="border rounded w-full p-2 mb-4"
+      />
 
-        <div className="form-group">
-          <label htmlFor="checkOutDate">Check-out Date</label>
-          <input
-            type="date"
-            id="checkOutDate"
-            value={formData.checkOutDate}
-            onChange={handleChange}
-            required
-          />
+      {/* Dynamically Generate Accommodation Options for Each Date */}
+      {data.tripStartDate && data.tripEndDate && (
+        <div className="mb-4">
+          {generateDateRange(data.tripStartDate, data.tripEndDate).map(
+            (date, index) => (
+              <div key={index} className="mb-4">
+                <label className="block mb-2">{`Accommodation for ${date}`}</label>
+                <select
+                  value={
+                    data.accommodations.find((item) => item.date === date)
+                      ?.accommodationType || ""
+                  }
+                  onChange={(e) =>
+                    handleAccommodationChange(date, e.target.value)
+                  }
+                  className="border rounded w-full p-2 mb-4"
+                >
+                  <option value="">Select Accommodation</option>
+                  <option value="Hotel">Hotel</option>
+                  <option value="Airbnb">Airbnb</option>
+                  <option value="Resort">Resort</option>
+                  <option value="Hostel">Hostel</option>
+                  <option value="Vacation Rental">Vacation Rental</option>
+                </select>
+              </div>
+            )
+          )}
         </div>
+      )}
 
-        <div className="form-group">
-          <label htmlFor="specialRequests">Special Requests</label>
-          <textarea
-            id="specialRequests"
-            value={formData.specialRequests}
-            onChange={handleChange}
-            placeholder="Any special requests for your stay (e.g., bed preference, early check-in)"
-          ></textarea>
-        </div>
-
-        <div className="form-buttons">
-          <button className="prev-btn" type="button">
-            Prev
-          </button>
-          <button className="next-btn" type="button">
-            Next
-          </button>
-        </div>
-      </form>
+      {/* Save Button */}
+      <div className="mt-4">
+        <button
+          type="button"
+          onClick={handleSave}
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Save Accommodation Details
+        </button>
+      </div>
     </div>
   );
-};
-
-export default Accommodation;
+}
