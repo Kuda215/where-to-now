@@ -7,7 +7,7 @@ import TripSelector from './pages/TripSelector';
 import EventPlanner from './pages/EventPlanner';
 import BudgetTracker from './pages/BudgetTracker';
 import LoginPage from './pages/Auth/LoginPage';
-import TravelerInfo from './components/TravelerInfo';
+import TripInfo from './components/TripInfo';
 import TravelDetails from './components/TravelerDetails/index';
 import ItineraryStops from './components/ItineraryStops';
 import ActivitiesForm from './components/ActivitiesForm';
@@ -66,7 +66,7 @@ function App() {
               path="/plan/traveler-info"
               element={
                 <ProtectedRoute>
-                  <TravelerInfo />
+                  <TripInfo />
                 </ProtectedRoute>
               }
             />

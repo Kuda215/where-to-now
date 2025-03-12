@@ -1,10 +1,10 @@
 import React, { useState ,useEffect } from "react";
 import "./styles.css";
 import TravelerDetails from "../../components/TravelerDetails";
-import TripDetailsForm from "../../components/TravelerInfo";
 import TravelPreferences from "../../components/TravelPreferences";
 import AccommodationDetails from "../../components/Accomodation";
 import ImageCarousel from "../../components/ImageCarousel";
+import TripInfo from "../../components/TripInfo";
 
 const JourneyForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -15,7 +15,6 @@ const JourneyForm = () => {
       const updatedStep = prevStep + 1;
       return updatedStep;
     });
-
     setShowTravelDetails(false);
   };
 
@@ -72,21 +71,14 @@ const JourneyForm = () => {
     setShowTravelDetails(true);
     setDetailsEditable(data.detailsEditable);
     setClearForm(data.clearForm);
-
-    console.log(showTravelDetails)
-
   };
   
   const handleSaveFromTripDetails = (data) => {
     setShowTravelDetails(true);
     setDetailsEditable(data.detailsEditable);
     setClearForm(data.clearForm);
-
-    console.log(showTravelDetails)
-
   };
   
-
   const toggleShowDetails = () => setShowDetails(!showDetails);
 
   const handleImageChange_Travelers = (images) => {
@@ -103,7 +95,7 @@ const JourneyForm = () => {
       case 1:
         return <TravelerDetails onSave={handleSaveFromChild} />;
       case 2:
-        return <TripDetailsForm  onSave={handleSaveFromTripDetails}/>;
+        return <TripInfo  onSave={handleSaveFromTripDetails}/>;
       case 3:
         return <AccommodationDetails />;
       case 4:
@@ -124,6 +116,8 @@ const JourneyForm = () => {
 
 
   useEffect(() => {
+
+     
   }, [travelers_images,TripDetails_images,handleSaveFromChild,currentStep]); // Trigger whenever they change
 
   return (
@@ -150,7 +144,7 @@ const JourneyForm = () => {
       </div>
 
       <div className="vac_form_container">
-          {currentStep < 3 &&  getCurrentStepComponent()}
+          {currentStep < 4 &&  getCurrentStepComponent()}
           {showTravelDetails === true &&
             <div className="navigation-buttons">
               <button
@@ -163,7 +157,7 @@ const JourneyForm = () => {
               <button
                 className="next-btn"
                 onClick={nextStep}
-                disabled={currentStep === 3}
+                disabled={currentStep === 4}
               >
                 Next
               </button>
